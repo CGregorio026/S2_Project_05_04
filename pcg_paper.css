@@ -14,18 +14,26 @@
 
 */
 
+/* 
+* {
+  border:1px solid red;
+} */
+
+
+
 html {
-    background-color: orange;
-    font-family: "Comic Sans MS";
+    background-color: rgba(247, 160, 0, 0.95);
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
     font-variant: small-caps;
-    font-size: 2em;
+    font-size: 1em;
 }
 
 body {
     border: 3px solid black;
     background-color: white;
     width: 90%;
+    height: 100%;
     min-width: 640px;
     max-width: 960px;
     margin-left: auto;
@@ -42,16 +50,33 @@ header #rimg {
     width: 15%;
 }
 
+/* 
+This is here to prevent container collapse. 
+*/
 header::after {
     clear: both;
     content: "";
+    display: table;
     width: 100%;
 }
 
+aside li {
+    display: block;
+    width: 20%;
+    float: left;
+    text-align: center;
+}
+
+/* 
+This removes discs from list items
+*/
 nav ul li {
     list-style-type: none;
 }
 
+/* 
+These style rules ensure that links that are visited and links that have been unvisited look the same, and when links are hovered over they change color and become underlined.
+*/
 ul li a:link,
 ul li a:visited {
     color: rgb(0, 0, 0);
@@ -62,4 +87,66 @@ ul li a:hover,
 ul li a:active {
     color: hsla(0, 0%, 50%, 0.8);
     text-decoration: underline;
+}
+
+p a:link,
+p a:visited {
+    color: hsla(246, 81%, 23%, 0.8);
+    text-decoration: none;
+}
+
+div.row {
+    width: 100%;
+    clear: both;
+    border: 1px solid black
+}
+
+/* 
+This adds invisible content after the row to ensure that container collapse doesn't occur on floated elements. It tricks the website into thinking that there is content when there isn't, so the page renders the floated content as a non floated block element due to the invisible content.
+*/
+.row::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+div.row>div.col-1-2 {
+    width: 49%;
+    text-align: center;
+    padding-left: 0.25%;
+    padding-right: 0.25%;
+    float: left;
+}
+
+/* 
+Every other div will be either dark blue or dark red.
+*/
+div.col-1-2:nth-of-type(even) {
+    color: hsla(246, 81%, 23%, 0.8);
+}
+
+div.col-1-2:nth-of-type(odd) {
+    color: hsla(0, 81%, 23%, 0.8);
+}
+
+#cougar {
+    position: relative;
+    top: 3px;
+    left: 198px;
+}
+
+.col-1-2 img {
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    text-align: center;
+}
+
+div.col-1-4 {
+    float: left;
+    width: 25%;
+    text-align: center
 }
