@@ -20,15 +20,26 @@
 } */
 
 
-
+/* 
+Everything after the background-color sets the words to have different qualities. The font is set to Georgia, but also to other fonts in case the web browser cannot display them. Small-caps displays everything as capital letters, with the first letter of each sentence being slightly bigger than the rest.
+*/
 html {
-    background-color: rgba(247, 160, 0, 0.95);
+    background: #c21500;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ffc500, #c21500);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ffc500, #c21500);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
     font-variant: small-caps;
     font-size: 1em;
 }
 
+/* 
+The viewport in the page specified by the instructions is 640px to 960px, so the widths of them are set. To ensure that the body is centered in the html, both of the margins are set to auto.
+*/
 body {
     border: 3px solid black;
     background-color: white;
@@ -40,6 +51,9 @@ body {
     margin-right: auto;
 }
 
+/* 
+These two set the two images to sizes equal to 100%, allowing them both to fill up the space of the header.
+*/
 header #limg {
     float: left;
     width: 85%;
@@ -51,7 +65,7 @@ header #rimg {
 }
 
 /* 
-This is here to prevent container collapse. 
+This is here to prevent container collapse. It adds invisible content in the page after the header, which does not display unless both sides are void of content. This tricks the page into thinking there is content after floated elements, making sure that the background color does not clip off the content.
 */
 header::after {
     clear: both;
@@ -68,7 +82,7 @@ aside li {
 }
 
 /* 
-This removes discs from list items
+This removes discs from list items inside the text.
 */
 nav ul li {
     list-style-type: none;
@@ -89,12 +103,10 @@ ul li a:active {
     text-decoration: underline;
 }
 
-p a:link,
-p a:visited {
-    color: hsla(246, 81%, 23%, 0.8);
-    text-decoration: none;
-}
 
+/* 
+This surrounds every row specified by the class by a column with a small, black border.
+*/
 div.row {
     width: 100%;
     clear: both;
@@ -119,7 +131,7 @@ div.row>div.col-1-2 {
 }
 
 /* 
-Every other div will be either dark blue or dark red.
+The text in every other div will be either dark blue or dark red.
 */
 div.col-1-2:nth-of-type(even) {
     color: hsla(246, 81%, 23%, 0.8);
@@ -129,6 +141,9 @@ div.col-1-2:nth-of-type(odd) {
     color: hsla(0, 81%, 23%, 0.8);
 }
 
+/* 
+Relative to the div it is inside of, the cougar image moves to the bottom right corner.
+*/
 #cougar {
     position: relative;
     top: 3px;
@@ -145,8 +160,20 @@ footer {
     text-align: center;
 }
 
+/* 
+The following style makes the entire div styles move to the left with the class col-1-4. This lines them up side by side.
+*/
 div.col-1-4 {
+    display: block;
     float: left;
     width: 25%;
     text-align: center
+}
+
+/* 
+Because of the previous style, the list items all move to the left, which stacks them horizontally, making 2 rows for close to five links. I wanted them on top of each other without discs, so I removed the discs and the float, causing them to display on top of one another.
+*/
+div.col-1-4 li {
+    float: none;
+    list-style-type: none;
 }
